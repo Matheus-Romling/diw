@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="160" viewBox="0 0 420 160" role="img" aria-labelledby="title description">
+  <title id="title">via — Aluguel de Automóveis</title>
+  <desc id="description">Marca via em verde, com uma seta laranja para cima e para a direita.</desc>
+  <rect width="420" height="160" rx="18" fill="#f6f7f3"/>
+  <text x="80" y="108" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="100" letter-spacing="-9" fill="#243f39">via</text>
+  <path d="M255 94 302 47m-31 0h31v31" fill="none" stroke="#ed9c65" stroke-width="8" stroke-linecap="square"/>
+  <text x="82" y="137" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="3" fill="#243f39">ALUGUEL DE AUTOMÓVEIS</text>
+</svg>

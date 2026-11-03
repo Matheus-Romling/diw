@@ -1,0 +1,12 @@
+.admin-shortcuts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 35px 0; }
+.admin-shortcuts a { display: block; padding: 24px; border: 1px solid var(--line); border-radius: 12px; background: #fff; text-decoration: none; }
+.admin-shortcuts a:hover { border-color: #85a38a; }
+.admin-shortcuts strong { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; }
+.admin-shortcuts p { margin: 12px 0 0; font-size: 12px; color: var(--muted); line-height: 1.8; }
+.admin-checkbox { display: flex; align-items: center; gap: 8px; padding-top: 24px; }
+.admin-checkbox input { margin: 0; accent-color: var(--green); }
+.admin-field-help { display: block; font-size: 10px; font-weight: 400; color: var(--muted); margin-top: 7px; }
+.admin-availability { border: 0; border-radius: 5px; font-size: 10px; padding: 7px 10px; color: #4f805e; background: #eaf3e8; }
+.admin-availability.unavailable { color: #9b706e; background: #f6ebea; }
+[data-panel] { margin-bottom: 35px; }
+@media (max-width: 900px) { .admin-shortcuts { grid-template-columns: 1fr; }.admin-shortcuts a { padding: 20px; } }

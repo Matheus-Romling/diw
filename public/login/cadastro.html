@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta — Via</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="login.css">
+  <script src="auth.js" defer></script>
+  <script src="login.js" defer></script>
+</head>
+<body class="auth-page">
+  <main class="auth-layout">
+    <aside class="auth-brand-panel" aria-label="Via, aluguel de carros">
+      <a class="brand" href="../index.html" aria-label="Via, início">via<span>↗</span><small>ALUGUEL DE CARROS</small></a>
+      <div class="auth-brand-copy"><p class="eyebrow">O CAMINHO É SEU</p><h1>Novos planos.<br>Novos caminhos<span>.</span></h1><p>Crie sua conta, encontre o carro ideal e deixe a próxima viagem com a gente.</p><span class="auth-arrow" aria-hidden="true">↗</span></div>
+      <p class="auth-brand-footer">Um carro. Infinitas possibilidades.</p>
+    </aside>
+    <section class="auth-form-panel" aria-labelledby="auth-title">
+      <a id="guest-link" class="auth-guest-link" href="../index.html">← Continuar como visitante</a>
+      <div class="auth-card auth-card-register">
+        <p class="eyebrow">VAMOS NOS CONHECER</p>
+        <h2 id="auth-title">Crie sua conta</h2>
+        <p id="auth-description" class="auth-description">Só precisamos de alguns dados para começar.</p>
+        <form id="auth-form" data-mode="register">
+          <div class="form-grid">
+            <label class="wide">Nome completo<input class="form-control" name="nome" required maxlength="100" autocomplete="name"></label>
+            <label>CPF<input class="form-control" name="cpf" required inputmode="numeric" pattern="[0-9.\-]{11,14}" maxlength="14" placeholder="000.000.000-00" title="Informe os 11 dígitos do CPF, com ou sem pontuação."></label>
+            <label>Telefone<input class="form-control" name="telefone" type="tel" required autocomplete="tel" maxlength="20"></label>
+            <label class="wide">E-mail<input class="form-control" name="email" type="email" required autocomplete="email" maxlength="120" placeholder="voce@exemplo.com"></label>
+            <label class="wide">Endereço<input class="form-control" name="endereco" required autocomplete="street-address" maxlength="200"></label>
+            <label class="wide">Profissão <span class="auth-optional">(opcional)</span><input class="form-control" name="profissao" maxlength="80"></label>
+            <label>Senha<input class="form-control" name="senha" type="password" required minlength="8" maxlength="128" autocomplete="new-password" placeholder="Pelo menos 8 caracteres"></label>
+            <label>Confirmar senha<input class="form-control" name="confirmarSenha" type="password" required minlength="8" maxlength="128" autocomplete="new-password"></label>
+          </div>
+          <p id="auth-error" class="form-error" role="alert" hidden></p>
+          <button class="btn btn-primary auth-submit" type="submit">Criar conta</button>
+        </form>
+        <p class="auth-switch">Já tem conta? <a id="auth-switch-link" href="index.html">Entrar</a></p>
+      </div>
+      <p class="auth-page-footer">Via · Aluguel de carros</p>
+    </section>
+  </main>
+</body>
+</html>

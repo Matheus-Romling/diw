@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administração — Via</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="../login/auth.js" defer></script>
+  <script src="admin.js" defer></script>
+</head>
+<body hidden>
+  <aside id="sidebar" class="sidebar" aria-label="Administração">
+    <div class="sidebar-heading"><a class="brand" href="#resumo" aria-label="Via, resumo">via<span>↗</span><small>ADMINISTRAÇÃO</small></a><button id="sidebar-close" class="sidebar-close" type="button" aria-label="Fechar menu">×</button></div>
+    <div class="sidebar-label">GESTÃO DA LOCADORA</div>
+    <nav class="main-nav" aria-label="Menu administrativo">
+      <a class="nav-item active" href="#resumo"><span aria-hidden="true">◫</span> Visão geral</a>
+      <a class="nav-item" href="#frota"><span aria-hidden="true">◇</span> Gerenciar frota</a>
+      <a class="nav-item" href="#pedidos"><span aria-hidden="true">≡</span> Reservas</a>
+      <a class="nav-item" href="#clientes"><span aria-hidden="true">♙</span> Clientes</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-user"><span id="admin-avatar" class="avatar" aria-hidden="true"></span><span class="sidebar-user-info"><strong id="admin-name"></strong><small id="admin-email"></small></span></div>
+      <button id="admin-logout" class="btn btn-outline-dark sidebar-session" type="button">Sair da conta <span aria-hidden="true">↪</span></button>
+    </div>
+  </aside>
+  <button id="sidebar-backdrop" class="sidebar-backdrop" type="button" aria-label="Fechar menu" tabindex="-1" hidden></button>
+  <div class="workspace">
+    <header class="topbar"><div class="topbar-heading"><button id="menu-toggle" class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false">☰</button><span id="current-section">Visão geral</span></div><span class="environment">Administração</span></header>
+    <main class="container-fluid main-content">
+      <div id="admin-error" class="connection-alert" role="alert" hidden><span id="admin-error-message"></span><button id="admin-retry" class="btn btn-outline-dark" type="button">Tentar novamente</button></div>
+      <section id="resumo" data-panel>
+        <div class="page-heading"><div><p class="eyebrow">TUDO SOB CONTROLE</p><h1>Visão geral<span>.</span></h1><p>Acompanhe a frota, as reservas e os clientes da Via.</p></div></div>
+        <div class="stats-grid"><article class="stat-card"><span class="stat-icon" aria-hidden="true">◇</span><div><span class="stat-label">Veículos disponíveis</span><strong id="admin-stat-cars">—</strong></div><span id="admin-total-cars" class="stat-tag"></span></article><article class="stat-card"><span class="stat-icon peach" aria-hidden="true">↗</span><div><span class="stat-label">Reservas pendentes</span><strong id="admin-stat-orders">—</strong></div></article><article class="stat-card"><span class="stat-icon lavender" aria-hidden="true">♙</span><div><span class="stat-label">Clientes cadastrados</span><strong id="admin-stat-clients">—</strong></div></article></div>
+        <div class="admin-shortcuts"><a href="#frota"><strong>Gerenciar frota <span aria-hidden="true">↗</span></strong><p>Cadastre carros e atualize valores e disponibilidade.</p></a><a href="#pedidos"><strong>Analisar reservas <span aria-hidden="true">↗</span></strong><p>Aprove ou cancele pedidos e acompanhe o histórico.</p></a><a href="#clientes"><strong>Consultar clientes <span aria-hidden="true">↗</span></strong><p>Consulte os cadastros e os pedidos vinculados.</p></a></div>
+      </section>
+      <section id="frota" class="content-section panel" data-panel hidden>
+        <div class="section-heading"><div><p class="eyebrow">CARROS PARA CADA PLANO</p><h2>Gerenciar frota</h2></div><button id="admin-new-car" class="btn btn-primary" type="button">+ Adicionar carro</button></div>
+        <div class="table-responsive"><table class="table align-middle"><caption class="visually-hidden">Veículos e opções de edição</caption><thead><tr><th>Veículo</th><th>Placa / matrícula</th><th>Categoria</th><th>Diária</th><th>Disponibilidade</th><th class="text-end">Ações</th></tr></thead><tbody id="admin-cars"></tbody></table></div>
+      </section>
+      <section id="pedidos" class="content-section panel" data-panel hidden>
+        <div class="section-heading"><div><p class="eyebrow">ACOMPANHE CADA VIAGEM</p><h2>Reservas</h2></div><label class="filter-label">Status<select id="admin-order-filter" class="form-select"><option value="">Todos os status</option><option>Pendente</option><option>Aprovado</option><option>Cancelado</option></select></label></div>
+        <div class="table-responsive"><table class="table align-middle"><caption class="visually-hidden">Reservas de todos os clientes</caption><thead><tr><th>Pedido / cliente</th><th>Veículo</th><th>Período</th><th>Total</th><th>Status</th><th class="text-end">Ações</th></tr></thead><tbody id="admin-orders"></tbody></table></div>
+      </section>
+      <section id="clientes" class="content-section panel" data-panel hidden>
+        <div class="section-heading"><div><p class="eyebrow">QUEM VIAJA COM A GENTE</p><h2>Clientes</h2></div><span class="section-caption">Cadastros com reservas são mantidos no histórico</span></div>
+        <div class="table-responsive"><table class="table align-middle"><caption class="visually-hidden">Clientes cadastrados</caption><thead><tr><th>Cliente / CPF</th><th>E-mail</th><th>Telefone</th><th>Reservas</th><th class="text-end">Ações</th></tr></thead><tbody id="admin-clients"></tbody></table></div>
+      </section>
+    </main>
+  </div>
+  <dialog id="admin-car-dialog" aria-labelledby="admin-car-title"><form id="admin-car-form">
+    <div class="dialog-heading"><div><p class="eyebrow">FROTA VIA</p><h2 id="admin-car-title">Adicionar carro</h2></div><button class="close-dialog" type="button" aria-label="Fechar">×</button></div>
+    <input type="hidden" name="id">
+    <div class="form-grid">
+      <label>Marca<input class="form-control" name="marca" required maxlength="60"></label><label>Modelo<input class="form-control" name="modelo" required maxlength="60"></label>
+      <label>Ano<input class="form-control" name="ano" type="number" min="1900" max="2100" required></label><label>Lugares<input class="form-control" name="lugares" type="number" min="1" max="9" required value="5"></label>
+      <label>Placa<input class="form-control" name="placa" required maxlength="7" pattern="[A-Za-z]{3}[0-9][A-Za-z0-9][0-9]{2}" placeholder="ABC1D23"></label><label>Matrícula<input class="form-control" name="matricula" required maxlength="30"></label>
+      <label>Categoria<select class="form-select" name="categoria"><option>Econômico</option><option>Sedan</option><option>SUV</option></select></label><label>Câmbio<select class="form-select" name="cambio"><option>Manual</option><option>Automático</option></select></label>
+      <label>Combustível<select class="form-select" name="combustivel"><option>Flex</option><option>Gasolina</option><option>Diesel</option><option>Elétrico</option><option>Híbrido</option></select></label><label>Diária (R$)<input class="form-control" name="diaria" type="number" min="0.01" step="0.01" required></label>
+      <label class="wide">Arquivo da foto no Wikimedia Commons<input class="form-control" name="imagemArquivo" placeholder="File:Nome do arquivo.jpg" maxlength="500"><small class="admin-field-help">Opcional. Sem foto, será usada a ilustração do carro.</small></label>
+      <label>Cor da ilustração<select class="form-select" name="corVisual"><option value="green">Verde</option><option value="sand">Areia</option><option value="blue">Azul</option></select></label><label class="admin-checkbox"><input name="disponivel" type="checkbox" checked> Disponível para reservas</label>
+    </div>
+    <p id="admin-car-error" class="form-error" role="alert" hidden></p>
+    <div class="dialog-footer"><button class="btn btn-light close-dialog" type="button">Cancelar</button><button class="btn btn-primary" type="submit">Salvar carro</button></div>
+  </form></dialog>
+  <dialog id="admin-confirm" aria-labelledby="admin-confirm-title"><div class="dialog-heading"><h2 id="admin-confirm-title">Confirmar ação</h2><button class="close-dialog" type="button" aria-label="Fechar">×</button></div><p id="admin-confirm-message"></p><p id="admin-confirm-error" class="form-error" role="alert" hidden></p><div class="dialog-footer"><button class="btn btn-light close-dialog" type="button">Voltar</button><button id="admin-confirm-action" class="btn btn-primary" type="button">Confirmar</button></div></dialog>
+  <div id="toast" class="app-toast" role="status" hidden></div>
+</body>
+</html>
